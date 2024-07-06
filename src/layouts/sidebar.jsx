@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
-import { CircleUser, Menu, Package2, Home, Project, Task, Settings, User } from "lucide-react";
+import { CircleUser, Menu, Package2, Home, ListChecks, ClipboardList, Settings, User } from "lucide-react";
 import { NavLink, Outlet } from "react-router-dom";
 import { navItems } from "../App";
 
@@ -52,10 +52,10 @@ const Sidebar = () => (
           <SidebarNavLink to="/" icon={<Home className="h-4 w-4" />}>
             Dashboard
           </SidebarNavLink>
-          <SidebarNavLink to="/projects" icon={<Project className="h-4 w-4" />}>
+          <SidebarNavLink to="/projects" icon={<ListChecks className="h-4 w-4" />}>
             Projects
           </SidebarNavLink>
-          <SidebarNavLink to="/tasks" icon={<Task className="h-4 w-4" />}>
+          <SidebarNavLink to="/tasks" icon={<ClipboardList className="h-4 w-4" />}>
             Tasks
           </SidebarNavLink>
           <SidebarNavLink to="/settings" icon={<Settings className="h-4 w-4" />}>
@@ -93,10 +93,10 @@ const MobileSidebar = () => (
         <SidebarNavLink to="/" icon={<Home className="h-4 w-4" />}>
           Dashboard
         </SidebarNavLink>
-        <SidebarNavLink to="/projects" icon={<Project className="h-4 w-4" />}>
+        <SidebarNavLink to="/projects" icon={<ListChecks className="h-4 w-4" />}>
           Projects
         </SidebarNavLink>
-        <SidebarNavLink to="/tasks" icon={<Task className="h-4 w-4" />}>
+        <SidebarNavLink to="/tasks" icon={<ClipboardList className="h-4 w-4" />}>
           Tasks
         </SidebarNavLink>
         <SidebarNavLink to="/settings" icon={<Settings className="h-4 w-4" />}>

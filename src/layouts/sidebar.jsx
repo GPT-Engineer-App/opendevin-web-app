@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
-import { CircleUser, Menu, Package2 } from "lucide-react";
+import { CircleUser, Menu, Package2, Home, Project, Task, Settings, User } from "lucide-react";
 import { NavLink, Outlet } from "react-router-dom";
 import { navItems } from "../App";
 
@@ -26,6 +26,13 @@ const Layout = () => {
         <main className="flex-grow p-4 overflow-auto">
           <Outlet />
         </main>
+        <footer className="border-t p-4 text-center text-sm text-muted-foreground">
+          <nav className="flex justify-center space-x-4">
+            <a href="/privacy-policy" className="hover:underline">Privacy Policy</a>
+            <a href="/terms-of-service" className="hover:underline">Terms of Service</a>
+            <a href="/contact-us" className="hover:underline">Contact Us</a>
+          </nav>
+        </footer>
       </div>
     </div>
   );
@@ -37,18 +44,30 @@ const Sidebar = () => (
       <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
         <NavLink to="/" className="flex items-center gap-2 font-semibold">
           <Package2 className="h-6 w-6" />
-          <span>Acme Inc</span>
+          <span>OpenDevin</span>
         </NavLink>
       </div>
       <div className="flex-1">
         <nav className="grid items-start px-2 text-sm font-medium lg:px-4 gap-2">
-          {navItems.map((item) => (
-            <SidebarNavLink key={item.to} to={item.to}>
-              {item.icon}
-              {item.title}
-            </SidebarNavLink>
-          ))}
+          <SidebarNavLink to="/" icon={<Home className="h-4 w-4" />}>
+            Dashboard
+          </SidebarNavLink>
+          <SidebarNavLink to="/projects" icon={<Project className="h-4 w-4" />}>
+            Projects
+          </SidebarNavLink>
+          <SidebarNavLink to="/tasks" icon={<Task className="h-4 w-4" />}>
+            Tasks
+          </SidebarNavLink>
+          <SidebarNavLink to="/settings" icon={<Settings className="h-4 w-4" />}>
+            Settings
+          </SidebarNavLink>
+          <SidebarNavLink to="/profile" icon={<User className="h-4 w-4" />}>
+            Profile
+          </SidebarNavLink>
         </nav>
+      </div>
+      <div className="p-4">
+        <Button variant="destructive" className="w-full">Logout</Button>
       </div>
     </div>
   </div>
@@ -69,14 +88,27 @@ const MobileSidebar = () => (
           className="flex items-center gap-2 text-lg font-semibold mb-4"
         >
           <Package2 className="h-6 w-6" />
-          <span className="sr-only">Acme Inc</span>
+          <span>OpenDevin</span>
         </NavLink>
-        {navItems.map((item) => (
-          <SidebarNavLink key={item.to} to={item.to}>
-            {item.title}
-          </SidebarNavLink>
-        ))}
+        <SidebarNavLink to="/" icon={<Home className="h-4 w-4" />}>
+          Dashboard
+        </SidebarNavLink>
+        <SidebarNavLink to="/projects" icon={<Project className="h-4 w-4" />}>
+          Projects
+        </SidebarNavLink>
+        <SidebarNavLink to="/tasks" icon={<Task className="h-4 w-4" />}>
+          Tasks
+        </SidebarNavLink>
+        <SidebarNavLink to="/settings" icon={<Settings className="h-4 w-4" />}>
+          Settings
+        </SidebarNavLink>
+        <SidebarNavLink to="/profile" icon={<User className="h-4 w-4" />}>
+          Profile
+        </SidebarNavLink>
       </nav>
+      <div className="p-4">
+        <Button variant="destructive" className="w-full">Logout</Button>
+      </div>
     </SheetContent>
   </Sheet>
 );
@@ -100,7 +132,7 @@ const UserDropdown = () => (
   </DropdownMenu>
 );
 
-const SidebarNavLink = ({ to, children }) => (
+const SidebarNavLink = ({ to, icon, children }) => (
   <NavLink
     to={to}
     className={({ isActive }) =>
@@ -110,6 +142,7 @@ const SidebarNavLink = ({ to, children }) => (
       )
     }
   >
+    {icon}
     {children}
   </NavLink>
 );
